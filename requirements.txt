@@ -1,0 +1,11 @@
+streamlit
+plotly
+matplotlib
+pandas
+numpy
+joblib
+scikit-learn
+opencv-python
+deepface
+groq
+Pillow

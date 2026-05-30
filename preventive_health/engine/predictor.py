@@ -3,14 +3,16 @@ import numpy as np
 
 class HealthPredictor:
     def __init__(self):
+        import os
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         self.models = {
-            "burnout_risk":    joblib.load("models/burnout_risk_model.pkl"),
-            "stress_overload": joblib.load("models/stress_overload_model.pkl"),
-            "sleep_deprived":  joblib.load("models/sleep_deprived_model.pkl"),
-            "poor_habits":     joblib.load("models/poor_habits_model.pkl"),
+            "burnout_risk":    joblib.load(os.path.join(base_dir, "models", "burnout_risk_model.pkl")),
+            "stress_overload": joblib.load(os.path.join(base_dir, "models", "stress_overload_model.pkl")),
+            "sleep_deprived":  joblib.load(os.path.join(base_dir, "models", "sleep_deprived_model.pkl")),
+            "poor_habits":     joblib.load(os.path.join(base_dir, "models", "poor_habits_model.pkl")),
         }
-        self.score_model = joblib.load("models/health_score_model.pkl")
-        self.features    = joblib.load("models/features.pkl")
+        self.score_model = joblib.load(os.path.join(base_dir, "models", "health_score_model.pkl"))
+        self.features    = joblib.load(os.path.join(base_dir, "models", "features.pkl"))
 
     def predict(self, row: dict) -> dict:
         X = [[row[f] for f in self.features]]

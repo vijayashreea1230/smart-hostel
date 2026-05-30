@@ -24,7 +24,9 @@ while True:
         emotion = analysis[0]['dominant_emotion']
 
         # Save emotion into txt file
-        with open("emotion.txt", "w") as file:
+        import os
+        root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        with open(os.path.join(root_dir, "emotion.txt"), "w") as file:
             file.write(emotion)
 
         # Display emotion on webcam
